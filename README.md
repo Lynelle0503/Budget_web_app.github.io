@@ -28,4 +28,5 @@ If budget is exceeded the value is displayed as red --
 
 Features to be added -- 
 >> modifying project from frontend instead of backend (admin)
+&
 >> Calculation based on categories, real time analysis and charts
