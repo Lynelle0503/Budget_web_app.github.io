@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+
+{% block title %}
+Project List
+{% endblock %}
+
+{% block body %}
+
+<h1 style= "text-align:center"> My Projects </h1>
+<hr>
+<a href="{% url 'add' %}" class = "btn-large grey right">
+    <i class="material-icons white-text left">add_circler</i>
+    <span class = "bold">Add Project</span>
+</a>
+<div class = "container">
+    <div class = "noproject-wrapper center">
+        {% if projects == None %}
+        <h3 class = "grey-text"> Sorry, you don't have projects yet. </h3>
+        {% else %}
+            <div class = "row">
+                {% for i in projects %}
+                    <div class = "col s12 13">
+                        <div class = "card-panel">
+                            <h3>{{ i.name }}</h3>
+                            <a href = "{% url 'Project-Detail' i.slug %}" class="btn">Visit Project</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

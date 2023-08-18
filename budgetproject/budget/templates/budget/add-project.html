@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<button class = "btn #455a64 blue-grey darken-2 left modal-trigger">
+    <a href="{% url 'Project-List' %}">
+        <i class="material-icons white-text left">arrow_back</i>
+        <span class = "bold">Home</span>
+    </a>
+</button>
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <label for="categoryInput"> Expense Categories </label>
+            <input type="text" name="categoryInput" id="categoryInput">
+            <input type="hidden" name="categoriesString">
+
+            <ul id = "categoriesContainer">
+                
+            </ul>
+
+            <button type="submit" class="btn">
+                Start Project
+            </button>
+
+        </form>
+    </div>
+    
+    <script src="{% static 'js/script.js' %}"> </script>
+{% endblock %}
