@@ -24,9 +24,19 @@ class Project(models.Model):
         expense_list = Expense.objects.filter(project = self)
         return len(expense_list)
 
+    def __str__(self):
+        model_name = self.__class__.__name__
+        fields_str = ", ".join((f"{field.name}={getattr(self, field.name)}" for field in self._meta.fields))
+        return f"{model_name}({fields_str})"
+
 class Category(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
+
+    def __str__(self):
+        model_name = self.__class__.__name__
+        fields_str = ", ".join((f"{field.name}={getattr(self, field.name)}" for field in self._meta.fields))
+        return f"{model_name}({fields_str})"
 
 class Expense(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name= 'expenses')
@@ -36,3 +46,8 @@ class Expense(models.Model):
 
     class Meta:
         ordering = ('-amount',)
+
+    def __str__(self):
+        model_name = self.__class__.__name__
+        fields_str = ", ".join((f"{field.name}={getattr(self, field.name)}" for field in self._meta.fields))
+        return f"{model_name}({fields_str})"
